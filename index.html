@@ -3,84 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrousel Amour</title>
+<title>Notre Histoire ❤️</title>
 
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+    background: linear-gradient(135deg, #ff4e8b, #ff758c, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    overflow: hidden;
 }
 
-/* Effet flou romantique */
-body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 40%),
-                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.4), transparent 40%);
-    animation: float 10s infinite alternate ease-in-out;
-    z-index: -1;
-}
-
-@keyframes float {
-    from { transform: translate(-10px, -10px); }
-    to { transform: translate(10px, 10px); }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 h1 {
+    text-align: center;
     color: white;
-    margin-top: 40px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin: 40px 0;
+    font-size: 2.5rem;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .carousel {
     display: flex;
-    gap: 20px;
-    margin: 50px 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
+    gap: 40px;
+    animation: scroll 25s linear infinite;
+    width: max-content;
 }
 
-.carousel img {
+.carousel-container:hover .carousel {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.card {
     width: 250px;
     height: 350px;
-    object-fit: cover;
-    border-radius: 20px;
+    perspective: 1000px;
+    flex-shrink: 0;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     cursor: pointer;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.carousel img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
 }
 
-.message-box {
-    position: fixed;
-    bottom: 40px;
-    background: rgba(255,255,255,0.9);
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    padding: 20px 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    max-width: 80%;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
     text-align: center;
     font-size: 18px;
     color: #d63384;
-    display: none;
-    animation: fadeIn 0.5s ease forwards;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Coeurs animés */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) scale(1); opacity: 0.8; }
+    to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
 }
 </style>
 </head>
@@ -89,44 +120,66 @@ h1 {
 
 <h1>❤️ Notre Histoire ❤️</h1>
 
-<div class="carousel">
-    <img src="https://picsum.photos/300/400?random=1" onclick="showMessage(0)">
-    <img src="https://picsum.photos/300/400?random=2" onclick="showMessage(1)">
-    <img src="https://picsum.photos/300/400?random=3" onclick="showMessage(2)">
-    <img src="https://picsum.photos/300/400?random=4" onclick="showMessage(3)">
-    <img src="https://picsum.photos/300/400?random=5" onclick="showMessage(4)">
-    <img src="https://picsum.photos/300/400?random=6" onclick="showMessage(5)">
-    <img src="https://picsum.photos/300/400?random=7" onclick="showMessage(6)">
-    <img src="https://picsum.photos/300/400?random=8" onclick="showMessage(7)">
-    <img src="https://picsum.photos/300/400?random=9" onclick="showMessage(8)">
-    <img src="https://picsum.photos/300/400?random=10" onclick="showMessage(9)">
+<div class="carousel-container">
+    <div class="carousel">
+
+        <!-- CARTE 1 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="photo1.jpg">
+                </div>
+                <div class="card-back">
+                    Notre premier souvenir ensemble ❤️
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTE 2 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="photo2.jpg">
+                </div>
+                <div class="card-back">
+                    Ce jour-là j’ai su que c’était toi ✨
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTE 3 -->
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="photo3.jpg">
+                </div>
+                <div class="card-back">
+                    Ton sourire illumine ma vie 💕
+                </div>
+            </div>
+        </div>
+
+        <!-- Duplique les cartes jusqu'à 10 -->
+
+    </div>
 </div>
 
-<div class="message-box" id="messageBox"></div>
-
 <script>
-const messages = [
-    "Chaque instant avec toi est un cadeau ❤️",
-    "Ton sourire illumine mes journées ✨",
-    "Je suis tellement chanceux de t’avoir 💕",
-    "Avec toi, tout devient plus beau 🌸",
-    "Tu es mon endroit préféré 🏡",
-    "Ton regard me fait fondre 💖",
-    "Notre histoire est ma plus belle aventure 🌍",
-    "Je t’aimerai toujours un peu plus chaque jour 🌹",
-    "Tu es mon bonheur quotidien ☀️",
-    "Pour toujours toi et moi 💍"
-];
-
-function showMessage(index) {
-    const box = document.getElementById("messageBox");
-    box.innerText = messages[index];
-    box.style.display = "block";
+// Coeurs animés
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
 
     setTimeout(() => {
-        box.style.display = "none";
-    }, 4000);
+        heart.remove();
+    }, 8000);
 }
+setInterval(createHeart, 800);
 </script>
 
 </body>
