@@ -12,7 +12,7 @@ body {
     background: linear-gradient(135deg, #ff4e8b, #ff758c, #a18cd1, #fbc2eb);
     background-size: 400% 400%;
     animation: gradientMove 15s ease infinite;
-    overflow-x: auto;
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -32,19 +32,25 @@ h1 {
 
 .carousel-container {
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* mobile fluide */
+    overflow: hidden;
     padding: 20px 10px 60px;
+    position: relative;
 }
 
 .carousel {
     display: flex;
     gap: 30px;
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
 .card {
-    width: 350px;   /* PLUS GRAND */
-    height: 500px;  /* PLUS GRAND */
+    width: 350px;
+    height: 500px;
     perspective: 1200px;
     flex-shrink: 0;
 }
@@ -96,7 +102,7 @@ h1 {
     font-size: 18px;
     color: #d63384;
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    overflow-y: auto; /* si texte long */
+    overflow-y: auto;
 }
 
 /* Coeurs animés */
@@ -113,7 +119,7 @@ h1 {
     to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
 }
 
-/* Scrollbar invisible pour mobile */
+/* Scrollbar invisible */
 .carousel-container::-webkit-scrollbar {
     display: none;
 }
@@ -139,113 +145,91 @@ h1 {
 <h1>❤️ Bonne anniversaire Mon amour ❤️</h1>
 
 <div class="carousel-container">
-<div class="carousel">
+<div class="carousel" id="carousel">
 
 <!-- CARTE 1 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex1.jpg">
-</div>
-<div class="card-back">
-Mon amour, aujourd'hui je veux simplement te célébrer toi. ❤️
-</div>
+<div class="card-front"><img src="alex1.jpg"></div>
+<div class="card-back">Mon amour, aujourd'hui je veux simplement te célébrer toi. ❤️</div>
 </div>
 </div>
 
 <!-- CARTE 2 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex2.JPG">
-</div>
-<div class="card-back">
-La femme que tu es. Ta douceur qui apaise, ton sourire qui éclaire tout autour de toi, ta gentillesse sincère, ta beauté naturelle qui se ressent dans ta manière d'aimer, de parler, de regarder ✨
-</div>
+<div class="card-front"><img src="alex2.JPG"></div>
+<div class="card-back">La femme que tu es. Ta douceur qui apaise, ton sourire qui éclaire tout autour de toi, ta gentillesse sincère, ta beauté naturelle ✨</div>
 </div>
 </div>
 
 <!-- CARTE 3 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex3.jpg">
-</div>
-<div class="card-back">
-Tu as ce pouvoir incroyable de rendre chaque moment plus beau. Un instant banal devient précieux 💕
-</div>
+<div class="card-front"><img src="alex3.jpg"></div>
+<div class="card-back">Tu as ce pouvoir incroyable de rendre chaque moment plus beau. 💕</div>
 </div>
 </div>
 
 <!-- CARTE 4 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex4.jpg">
-</div>
-<div class="card-back">
-Ces petites attentions simples, ce sont des gestes presque invisibles pour les autres, mais pour moi ils veulent tout dire 🌸
-</div>
+<div class="card-front"><img src="alex4.jpg"></div>
+<div class="card-back">Ces petites attentions simples signifient tout pour moi 🌸</div>
 </div>
 </div>
 
 <!-- CARTE 5 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex5.jpeg">
-</div>
-<div class="card-back">
-Tu es forte sans le montrer, tendre sans effort, lumineuse sans chercher à l'être 💖
-</div>
+<div class="card-front"><img src="alex5.jpeg"></div>
+<div class="card-back">Tu es forte, tendre et lumineuse 💖</div>
 </div>
 </div>
 
 <!-- CARTE 6 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex6.jpg">
-</div>
-<div class="card-back">
-A 27 ans, tu es déjà une femme admirable, et je suis tellement fier de celle que tu es 💫
-</div>
+<div class="card-front"><img src="alex6.jpg"></div>
+<div class="card-back">À 27 ans, tu es déjà une femme admirable 💫</div>
 </div>
 </div>
 
 <!-- CARTE 7 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex7.jpeg">
-</div>
-<div class="card-back">
-Ne doute jamais de ta valeur. Ne doute jamais de la lumière que tu apportes dans la vie des autres. Et surtout, ne doute jamais de l'amour immense que j'ai pour toi 🌹
-</div>
+<div class="card-front"><img src="alex7.jpeg"></div>
+<div class="card-back">Ne doute jamais de ta valeur et de l'amour que j'ai pour toi 🌹</div>
 </div>
 </div>
 
 <!-- CARTE 8 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex8.jpeg">
-</div>
-<div class="card-back">
-❤️❤️ Joyeux anniversaire à la femme extraordinaire que tu es ❤️❤️
-</div>
+<div class="card-front"><img src="alex8.jpeg"></div>
+<div class="card-back">❤️ Joyeux anniversaire à la femme extraordinaire que tu es ❤️</div>
 </div>
 </div>
 
 <!-- CARTE 9 -->
 <div class="card" onclick="this.classList.toggle('flipped')">
 <div class="card-inner">
-<div class="card-front">
-<img src="alex9.jpg">
+<div class="card-front"><img src="alex9.jpg"></div>
+<div class="card-back">Pour toujours et à jamais 💍</div>
 </div>
-<div class="card-back">
-Pour toujours et à jamais 💍
 </div>
+
+<!-- Duplique les cartes pour créer un défilement infini -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front"><img src="alex1.jpg"></div>
+<div class="card-back">Mon amour, aujourd'hui je veux simplement te célébrer toi. ❤️</div>
+</div>
+</div>
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front"><img src="alex2.JPG"></div>
+<div class="card-back">La femme que tu es. Ta douceur qui apaise, ton sourire qui éclaire tout autour de toi, ta gentillesse sincère ✨</div>
 </div>
 </div>
 
@@ -254,29 +238,29 @@ Pour toujours et à jamais 💍
 
 <!-- Bas de page romantique -->
 <div class="footer">
-💖 Chaque jour à tes côtés est magique 💖
+💖 27 ans, profites mon amour 💖
 </div>
 
 <script>
 // Tap mobile pour retourner carte
 document.querySelectorAll(".card").forEach(card => {
-card.addEventListener("touchstart", function() {
-this.classList.toggle("flipped");
-});
+    card.addEventListener("touchstart", function() {
+        this.classList.toggle("flipped");
+    });
 });
 
 // Coeurs animés
 function createHeart() {
-const heart = document.createElement("div");
-heart.classList.add("heart");
-heart.innerText = "💖";
-heart.style.left = Math.random() * 100 + "vw";
-heart.style.fontSize = (15 + Math.random() * 25) + "px";
-heart.style.animationDuration = (4 + Math.random() * 4) + "s"; // plus dynamique
-document.body.appendChild(heart);
-setTimeout(() => heart.remove(), 8000);
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s"; 
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
 }
-setInterval(createHeart, 400); // plus de coeurs pour remplir le bas
+setInterval(createHeart, 400);
 </script>
 
 </body>
