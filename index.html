@@ -8,11 +8,11 @@
 <style>
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: linear-gradient(135deg, #ff4e8b, #ff758c, #a18cd1, #fbc2eb);
     background-size: 400% 400%;
     animation: gradientMove 15s ease infinite;
-    overflow: hidden;
+    overflow-x: auto;
 }
 
 @keyframes gradientMove {
@@ -25,35 +25,25 @@ h1 {
     text-align: center;
     color: white;
     margin: 40px 0;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
 .carousel-container {
     width: 100%;
-    overflow: hidden;
-    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 10px 60px;
 }
 
 .carousel {
     display: flex;
-    gap: 40px;
-    animation: scroll 25s linear infinite;
-    width: max-content;
-}
-
-.carousel-container:hover .carousel {
-    animation-play-state: paused;
-}
-
-@keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    gap: 25px;
 }
 
 .card {
-    width: 250px;
-    height: 350px;
+    width: 240px;
+    height: 340px;
     perspective: 1000px;
     flex-shrink: 0;
 }
@@ -64,9 +54,14 @@ h1 {
     position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    cursor: pointer;
 }
 
+/* Hover desktop */
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Tap mobile */
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
@@ -75,8 +70,9 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 25px;
+    border-radius: 20px;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     overflow: hidden;
 }
 
@@ -89,22 +85,22 @@ h1 {
 .card-back {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
     text-align: center;
-    font-size: 18px;
+    font-size: 17px;
     color: #d63384;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* Coeurs animés */
 .heart {
     position: fixed;
     bottom: -20px;
-    font-size: 20px;
+    font-size: 18px;
     animation: floatUp 8s linear infinite;
     opacity: 0.7;
 }
@@ -121,137 +117,136 @@ h1 {
 <h1>❤️ Notre Histoire ❤️</h1>
 
 <div class="carousel-container">
-    <div class="carousel">
+<div class="carousel">
 
-        <!-- CARTE 1 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="alex1.jpg">
-                </div>
-                <div class="card-back">
-                    Notre premier souvenir ensemble ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 1 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex1.jpg">
+</div>
+<div class="card-back">
+Notre premier souvenir ensemble ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 2 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="alex2.JPG">
-                </div>
-                <div class="card-back">
-                    Ce jour-là j’ai su que c’était toi ✨
-                </div>
-            </div>
-        </div>
+<!-- CARTE 2 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex2.JPG">
+</div>
+<div class="card-back">
+Ce jour-là j’ai su que c’était toi ✨
+</div>
+</div>
+</div>
 
-        <!-- CARTE 3 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="alex3.jpg">
-                </div>
-                <div class="card-back">
-                    Ton sourire illumine ma vie 💕
-                </div>
-            </div>
-        </div>
+<!-- CARTE 3 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex3.jpg">
+</div>
+<div class="card-back">
+Ton sourire illumine ma vie 💕
+</div>
+</div>
+</div>
 
-        <!-- CARTE 4 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/alex4.jpg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 4 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex4.jpg">
+</div>
+<div class="card-back">
+Ton message personnalisé 4 ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 5 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/alex5.jpeg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 5 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex5.jpeg">
+</div>
+<div class="card-back">
+Ton message personnalisé 5 ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 6 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/alex6.jpg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 6 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex6.jpg">
+</div>
+<div class="card-back">
+Ton message personnalisé 6 ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 7 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/alex7.jpeg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 7 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex7.jpeg">
+</div>
+<div class="card-back">
+Ton message personnalisé 7 ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 8 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/alex8.jpeg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
+<!-- CARTE 8 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex8.jpeg">
+</div>
+<div class="card-back">
+Ton message personnalisé 8 ❤️
+</div>
+</div>
+</div>
 
-        <!-- CARTE 9 -->
-        <div class="card" onclick="this.classList.toggle('flipped')">
-            <div class="card-inner">
-                <div class="card-front">
-                    <img src="images/photo1.jpg">
-                </div>
-                <div class="card-back">
-                    Ton message personnalisé 1 ❤️
-                </div>
-            </div>
-        </div>
-        
-        <!-- Duplique les cartes jusqu'à 10 -->
+<!-- CARTE 9 -->
+<div class="card" onclick="this.classList.toggle('flipped')">
+<div class="card-inner">
+<div class="card-front">
+<img src="alex9.jpg">
+</div>
+<div class="card-back">
+Ton message personnalisé 9 ❤️
+</div>
+</div>
+</div>
 
-    </div>
+</div>
 </div>
 
 <script>
-// Coeurs animés
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
-    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(heart);
+document.querySelectorAll(".card").forEach(card => {
+card.addEventListener("touchstart", function() {
+this.classList.toggle("flipped");
+});
+});
 
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
+function createHeart() {
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerText = "💖";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (6 + Math.random() * 4) + "s";
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 8000);
 }
-setInterval(createHeart, 800);
+setInterval(createHeart, 900);
 </script>
 
 </body>
