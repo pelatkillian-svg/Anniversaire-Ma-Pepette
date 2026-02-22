@@ -24,7 +24,7 @@ body {
 h1 {
     text-align: center;
     color: white;
-    margin: 40px 0;
+    margin: 30px 10px;
     font-size: 2rem;
     text-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
@@ -32,19 +32,19 @@ h1 {
 .carousel-container {
     width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch; /* mobile fluide */
     padding: 20px 10px 60px;
 }
 
 .carousel {
     display: flex;
-    gap: 25px;
+    gap: 30px;
 }
 
 .card {
-    width: 240px;
-    height: 340px;
-    perspective: 1000px;
+    width: 350px;   /* PLUS GRAND */
+    height: 500px;  /* PLUS GRAND */
+    perspective: 1200px;
     flex-shrink: 0;
 }
 
@@ -70,7 +70,7 @@ h1 {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 25px;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     overflow: hidden;
@@ -84,19 +84,21 @@ h1 {
 
 .card-back {
     background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
-    font-size: 17px;
+    font-size: 18px;
     color: #d63384;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    overflow-y: auto; /* si texte long */
 }
 
+/* Coeurs animés */
 .heart {
     position: fixed;
     bottom: -20px;
@@ -108,6 +110,11 @@ h1 {
 @keyframes floatUp {
     from { transform: translateY(0) scale(1); opacity: 0.8; }
     to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+
+/* Scrollbar invisible pour mobile */
+.carousel-container::-webkit-scrollbar {
+    display: none;
 }
 </style>
 </head>
@@ -126,7 +133,7 @@ h1 {
 <img src="alex1.jpg">
 </div>
 <div class="card-back">
-Notre premier souvenir ensemble ❤️
+Depuis le premier jour,<br>tu as changé ma vie ❤️
 </div>
 </div>
 </div>
@@ -138,7 +145,7 @@ Notre premier souvenir ensemble ❤️
 <img src="alex2.JPG">
 </div>
 <div class="card-back">
-Ce jour-là j’ai su que c’était toi ✨
+Je n’oublierai jamais ce moment magique ✨
 </div>
 </div>
 </div>
@@ -150,7 +157,7 @@ Ce jour-là j’ai su que c’était toi ✨
 <img src="alex3.jpg">
 </div>
 <div class="card-back">
-Ton sourire illumine ma vie 💕
+Ton sourire illumine ma vie tous les jours 💕
 </div>
 </div>
 </div>
@@ -162,7 +169,7 @@ Ton sourire illumine ma vie 💕
 <img src="alex4.jpg">
 </div>
 <div class="card-back">
-Ton message personnalisé 4 ❤️
+Je t’aime plus que tout 🌸
 </div>
 </div>
 </div>
@@ -174,7 +181,7 @@ Ton message personnalisé 4 ❤️
 <img src="alex5.jpeg">
 </div>
 <div class="card-back">
-Ton message personnalisé 5 ❤️
+Chaque instant avec toi est un trésor 💖
 </div>
 </div>
 </div>
@@ -186,7 +193,7 @@ Ton message personnalisé 5 ❤️
 <img src="alex6.jpg">
 </div>
 <div class="card-back">
-Ton message personnalisé 6 ❤️
+Merci d’être toi 💫
 </div>
 </div>
 </div>
@@ -198,7 +205,7 @@ Ton message personnalisé 6 ❤️
 <img src="alex7.jpeg">
 </div>
 <div class="card-back">
-Ton message personnalisé 7 ❤️
+Chaque jour à tes côtés est un rêve 🌹
 </div>
 </div>
 </div>
@@ -210,7 +217,7 @@ Ton message personnalisé 7 ❤️
 <img src="alex8.jpeg">
 </div>
 <div class="card-back">
-Ton message personnalisé 8 ❤️
+Je ne cesserai jamais de t’aimer 🤍
 </div>
 </div>
 </div>
@@ -222,7 +229,7 @@ Ton message personnalisé 8 ❤️
 <img src="alex9.jpg">
 </div>
 <div class="card-back">
-Ton message personnalisé 9 ❤️
+Pour toujours et à jamais 💍
 </div>
 </div>
 </div>
@@ -231,12 +238,14 @@ Ton message personnalisé 9 ❤️
 </div>
 
 <script>
+// Tap mobile pour retourner carte
 document.querySelectorAll(".card").forEach(card => {
 card.addEventListener("touchstart", function() {
 this.classList.toggle("flipped");
 });
 });
 
+// Coeurs animés
 function createHeart() {
 const heart = document.createElement("div");
 heart.classList.add("heart");
