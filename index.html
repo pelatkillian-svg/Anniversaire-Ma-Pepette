@@ -1,266 +1,377 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bonne anniversaire Mon amour ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonne anniversaire Mon amour ❤️</title>
 
-<!-- Google Fonts romantique -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts romantique -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Dancing Script', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(135deg, #ff4e8b, #ff758c, #a18cd1, #fbc2eb);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    overflow-x: hidden;
-    position: relative;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Dancing Script', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #ff4e8b, #ff758c, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
 
-h1 {
-    text-align: center;
-    color: white;
-    margin: 30px 10px;
-    font-size: 2rem;
-    text-shadow: 0 5px 20px rgba(0,0,0,0.4);
-}
+            50% {
+                background-position: 100% 50%;
+            }
 
-.carousel-container {
-    width: 100%;
-    overflow: hidden;
-    padding: 20px 10px 60px;
-    position: relative;
-    user-select: none;
-}
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-.carousel {
-    display: flex;
-    gap: 30px;
-    animation: scroll 40s linear infinite;
-    justify-content: start;
-}
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 30px 10px;
+            font-size: 2rem;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
 
-@keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
+        .card {
+            width: 350px;
+            height: 500px;
+            perspective: 1200px;
+            flex-shrink: 0;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.card {
-    width: 350px;
-    height: 500px;
-    perspective: 1200px;
-    flex-shrink: 0;
-    cursor: pointer;
-}
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
 
-.card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
+        /* Hover desktop */
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
 
-/* Hover desktop */
-.card:hover .card-inner {
-    transform: rotateY(180deg);
-}
+        /* Tap mobile */
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
 
-/* Tap mobile */
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
-}
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+        }
 
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    overflow: hidden;
-}
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.card-front img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .card-back {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+            font-size: 18px;
+            color: #d63384;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-.card-back {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transform: rotateY(180deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    text-align: center;
-    font-size: 18px;
-    color: #d63384;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    overflow-y: auto;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
+        .card.flipped .card-back {
+            opacity: 1;
+        }
 
-.card.flipped .card-back {
-    opacity: 1;
-}
+        /* Coeurs animés */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            font-size: 18px;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.7;
+        }
 
-/* Coeurs animés */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 18px;
-    animation: floatUp 8s linear infinite;
-    opacity: 0.7;
-}
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
 
-@keyframes floatUp {
-    from { transform: translateY(0) scale(1); opacity: 0.8; }
-    to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-}
+            to {
+                transform: translateY(-110vh) scale(1.5);
+                opacity: 0;
+            }
+        }
 
-/* Pétales flottants */
-.petale {
-    position: fixed;
-    bottom: -20px;
-    font-size: 20px;
-    animation: floatPetale linear infinite;
-    opacity: 0.6;
-}
+        /* Pétales flottants */
+        .petale {
+            position: fixed;
+            bottom: -20px;
+            font-size: 20px;
+            animation: floatPetale linear infinite;
+            opacity: 0.6;
+        }
 
-@keyframes floatPetale {
-    from { transform: translateY(0) rotate(0deg); opacity: 0.6; }
-    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
+        @keyframes floatPetale {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.6;
+            }
 
-/* Scrollbar invisible */
-.carousel-container::-webkit-scrollbar {
-    display: none;
-}
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
 
-/* Bas de page romantique */
-.footer {
-    width: 100%;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    color: white;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    margin-top: 40px;
-    position: relative;
-}
+        /* Scrollbar invisible */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
 
-/* Citation changeante */
-.citation {
-    font-size: 22px;
-    text-align: center;
-}
-</style>
+        /* Bas de page romantique */
+        .footer {
+            width: 100%;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        /* Citation changeante */
+        .citation {
+            font-size: 22px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>❤️ Bonne anniversaire Mon amour ❤️</h1>
+    <h1>❤️ Bonne anniversaire Mon amour ❤️</h1>
 
-<div class="carousel-container">
-<div class="carousel" id="carousel">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex1.jpg" loading="lazy"></div>
+                            <div class="card-back">Mon amour, aujourd'hui je veux simplement te célébrer toi. ❤️</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex2.JPG" loading="lazy"></div>
+                            <div class="card-back">La femme que tu es. Ta douceur qui apaise, ton sourire qui éclaire
+                                tout autour de toi, ta gentillesse sincère, ta beauté naturelle ✨</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex3.jpg" loading="lazy"></div>
+                            <div class="card-back">Tu as ce pouvoir incroyable de rendre chaque moment plus beau. 💕
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex4.jpg" loading="lazy"></div>
+                            <div class="card-back">Ces petites attentions simples signifient tout pour moi 🌸</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex5.jpeg" loading="lazy"></div>
+                            <div class="card-back">Tu es forte, tendre et lumineuse 💖</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex6.jpg" loading="lazy"></div>
+                            <div class="card-back">À 27 ans, tu es déjà une femme admirable 💫</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex7.jpeg" loading="lazy"></div>
+                            <div class="card-back">Ne doute jamais de ta valeur et de l'amour que j'ai pour toi 🌹</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex8.jpeg" loading="lazy"></div>
+                            <div class="card-back">❤️ Joyeux anniversaire à la femme extraordinaire que tu es ❤️</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="glide__slide">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-front"><img src="alex9.jpg" loading="lazy"></div>
+                            <div class="card-back">Pour toujours et à jamais 💍</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+        </div>
+    </div>
 
-<!-- CARTE 1 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex1.jpg" loading="lazy"></div><div class="card-back">Mon amour, aujourd'hui je veux simplement te célébrer toi. ❤️</div></div></div>
 
-<!-- CARTE 2 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex2.JPG" loading="lazy"></div><div class="card-back">La femme que tu es. Ta douceur qui apaise, ton sourire qui éclaire tout autour de toi, ta gentillesse sincère, ta beauté naturelle ✨</div></div></div>
+    <!-- Bas de page dynamique -->
+    <div class="footer">
+        <div class="citation" id="citation">💖 Chaque jour à tes côtés est magique 💖</div>
+    </div>
 
-<!-- CARTE 3 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex3.jpg" loading="lazy"></div><div class="card-back">Tu as ce pouvoir incroyable de rendre chaque moment plus beau. 💕</div></div></div>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 
-<!-- CARTE 4 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex4.jpg" loading="lazy"></div><div class="card-back">Ces petites attentions simples signifient tout pour moi 🌸</div></div></div>
+    <script>
+        let currentBackgroundAudio = null;
 
-<!-- CARTE 5 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex5.jpeg" loading="lazy"></div><div class="card-back">Tu es forte, tendre et lumineuse 💖</div></div></div>
+        new Glide('.glide', {
+            type: 'carousel',
+            startAt: 0,
+            perView: 3,
+            focusAt: 'center',
+            //peek: 100,
+            //autoplay: 5000,
+            //hoverpause: true,
+            breakpoints: {
+                800: {
+                    perView: 1
+                }
+            }
+        }).mount();
 
-<!-- CARTE 6 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex6.jpg" loading="lazy"></div><div class="card-back">À 27 ans, tu es déjà une femme admirable 💫</div></div></div>
+        // Tap mobile pour retourner carte
+        document.querySelectorAll(".card").forEach(card => {
+            card.addEventListener("click", function () {
+                this.classList.toggle("flipped");
+            });
+        });
 
-<!-- CARTE 7 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex7.jpeg" loading="lazy"></div><div class="card-back">Ne doute jamais de ta valeur et de l'amour que j'ai pour toi 🌹</div></div></div>
+        // Coeurs animés
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerText = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (15 + Math.random() * 25) + "px";
+            heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createHeart, 400);
 
-<!-- CARTE 8 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex8.jpeg" loading="lazy"></div><div class="card-back">❤️ Joyeux anniversaire à la femme extraordinaire que tu es ❤️</div></div></div>
+        // Pétales animés
+        function createPetale() {
+            const petale = document.createElement("div");
+            petale.classList.add("petale");
+            petale.innerText = "🌸";
+            petale.style.left = Math.random() * 100 + "vw";
+            petale.style.fontSize = (15 + Math.random() * 25) + "px";
+            petale.style.animationDuration = (6 + Math.random() * 6) + "s";
+            document.body.appendChild(petale);
+            setTimeout(() => petale.remove(), 12000);
+        }
+        setInterval(createPetale, 800);
 
-<!-- CARTE 9 -->
-<div class="card"><div class="card-inner"><div class="card-front"><img src="alex9.jpg" loading="lazy"></div><div class="card-back">Pour toujours et à jamais 💍</div></div></div>
-</div>
-</div>
+        // Citation changeante
+        const citations = [
+            "💖 Chaque jour à tes côtés est magique 💖",
+            "✨ Tu illumines ma vie de mille façons ✨",
+            "🌹 Ton sourire fait battre mon cœur 🌹",
+            "💕 Pour toujours et à jamais 💕"
+        ];
+        let index = 0;
+        setInterval(() => {
+            index = (index + 1) % citations.length;
+            document.getElementById("citation").innerText = citations[index];
+        }, 5000);
 
-<!-- Bas de page dynamique -->
-<div class="footer">
-<div class="citation" id="citation">💖 Chaque jour à tes côtés est magique 💖</div>
-</div>
+        function playBackgroundAudio(fileLink, loop = false, volume = 0.6) {
+            // 1. Si un son joue déjà, on le coupe
+            if (currentBackgroundAudio) {
+                currentBackgroundAudio.pause();
+                currentBackgroundAudio.currentTime = 0;
+            }
 
-<script>
-// Tap mobile pour retourner carte
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", function() {
-        this.classList.toggle("flipped");
-    });
-});
+            // 2. On crée le nouveau lecteur audio
+            currentBackgroundAudio = new Audio(fileLink);
+            currentBackgroundAudio.loop = loop;
+            currentBackgroundAudio.volume = volume; // Volume à 60% pour ne pas exploser les oreilles
 
-// Coeurs animés
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 8000);
-}
-setInterval(createHeart, 400);
+            // 3. On lance la lecture (avec gestion d'erreur pour les navigateurs)
+            currentBackgroundAudio.play().catch(e => {
+                console.log("Lecture auto bloquée par le navigateur, attente d'interaction.");
+            });
+        }
 
-// Pétales animés
-function createPetale() {
-    const petale = document.createElement("div");
-    petale.classList.add("petale");
-    petale.innerText = "🌸";
-    petale.style.left = Math.random() * 100 + "vw";
-    petale.style.fontSize = (15 + Math.random() * 25) + "px";
-    petale.style.animationDuration = (6 + Math.random() * 6) + "s";
-    document.body.appendChild(petale);
-    setTimeout(() => petale.remove(), 12000);
-}
-setInterval(createPetale, 800);
+        window.addEventListener('DOMContentLoaded', () => {
+            function handleFirstInteraction() {
+                playBackgroundAudio('in_the_pool_musique.mp3', true);
 
-// Citation changeante
-const citations = [
-    "💖 Chaque jour à tes côtés est magique 💖",
-    "✨ Tu illumines ma vie de mille façons ✨",
-    "🌹 Ton sourire fait battre mon cœur 🌹",
-    "💕 Pour toujours et à jamais 💕"
-];
-let index = 0;
-setInterval(() => {
-    index = (index + 1) % citations.length;
-    document.getElementById("citation").innerText = citations[index];
-}, 5000);
-</script>
+                window.removeEventListener('click', handleFirstInteraction);
+            }
+
+            // Écoute les interactions utilisateur
+            window.addEventListener('click', handleFirstInteraction);
+        });
+    </script>
 
 </body>
+
 </html>
