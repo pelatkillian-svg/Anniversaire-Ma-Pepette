@@ -111,6 +111,43 @@
             opacity: 1;
         }
 
+        .click-hint {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            /* Espace avec le carousel */
+            width: 100%;
+            animation: bounce 2s infinite;
+        }
+
+        .click-hint span {
+            background: rgba(255, 255, 255, 0.9);
+            color: #d63384;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ffffff;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
         /* Coeurs animés */
         .heart {
             position: fixed;
@@ -184,6 +221,9 @@
 <body>
 
     <h1>❤️ Bonne anniversaire Mon amour ❤️</h1>
+    <div id="hint" class="click-hint">
+        <span>✨ Clique sur une photo pour l'ouvrir ✨</span>
+    </div>
 
     <div class="glide">
         <div class="glide__track" data-glide-el="track">
@@ -369,6 +409,16 @@
 
             // Écoute les interactions utilisateur
             window.addEventListener('click', handleFirstInteraction);
+        });
+
+        // Faire disparaître l'indice au premier clic
+        const hint = document.getElementById('hint');
+        document.querySelectorAll(".card").forEach(card => {
+            card.addEventListener("click", function () {
+                if (hint) {
+                    hint.classList.add("hidden");
+                }
+            }, { once: true }); // S'exécute une seule fois
         });
     </script>
 
