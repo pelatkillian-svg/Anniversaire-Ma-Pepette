@@ -222,9 +222,6 @@ h1 {
 <script>
 // Tap mobile pour retourner carte
 document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("touchstart", function() {
-        this.classList.toggle("flipped");
-    });
     card.addEventListener("click", function() {
         this.classList.toggle("flipped");
     });
